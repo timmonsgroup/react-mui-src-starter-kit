@@ -11,7 +11,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { SnackbarProvider } from "notistack";
 import { ProvideAuth } from "@timmons-group/shared-react-auth";
-import { getConfigBuilder } from "@timmons-group/shared-auth-config";
+// import { getConfigBuilder } from "@timmons-group/shared-auth-config";
 
 import {
   QueryClient,
@@ -51,37 +51,23 @@ const App:FC = () => {
   // fetch a config with useEffect
   useEffect(() => {
     if (!initialized) {
-      axios
-        .get(`/api/oauth/config`)
-        .then((res) => {
-          const cfg = getConfigBuilder()
-            .withRawConfiguration(res.data)
-            .withAppAuthorization("SomeAppName")
-            .build();
-          setConfig(cfg);
-          setInitialized(true);
-        })
-        .catch((_err) => {
-          // fake it till you make it
-          // const cfg = getConfigBuilder()
-          //   // .withOAuth({
-          //   //   "clientId": "Client ID Goes Here",
-          //   //   "redirectUri": "/oAuthHelper.html",
-          //   //   "scopes": ["openid", "email"],
-          //   //   "host": "YourApp.com"
-          //   // })
-          //   // .withOAuthRefreshEndpoint('/api/oauth/refresh')
-          //   // .withOAuthLogoutEndpoint('/api/oauth/logout')
-          //   .withNoAuthorization()
-          //   .withDefaultPermissions([
-          //     'Can See Help'
-          //   ])
-          //   .withStorage('none')
-          //   .build();
-          //   setConfig(cfg);
-          setConfig({ error: "Config not found" });
-          setInitialized(true);
-        });
+      setConfig({ error: "Config not found" });
+      setInitialized(true);
+      // Uncomment this block to fetch the config from the server
+      // axios
+      //   .get(`/api/oauth/config`)
+      //   .then((res) => {
+      //     const cfg = getConfigBuilder()
+      //       .withRawConfiguration(res.data)
+      //       .withAppAuthorization("SomeAppName")
+      //       .build();
+      //     setConfig(cfg);
+      //     setInitialized(true);
+      //   })
+      //   .catch((_err) => {
+      //     setConfig({ error: "Config not found" });
+      //     setInitialized(true);
+      //   });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

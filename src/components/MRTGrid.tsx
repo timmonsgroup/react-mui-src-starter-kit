@@ -5,7 +5,10 @@ import {
   type MRT_ColumnDef,
 } from 'material-react-table';
 
-import { RoleChoices } from '@configs/teamMember.form.config'
+export const RoleChoices = [
+  { id: "admin", label: "Admin" },
+  { id: "member", label: "Member" },
+];
 
 type RoleLabel = typeof RoleChoices[number]['label'];
 

@@ -152,7 +152,6 @@ declare module '@mui/material/Button' {
 }
 
 export const fontFamily = '"OpenSans-Regular", "Helvetica", "Arial", "sans-serif"';
-// const fontSemibold = '"OpenSans-SemiBold", "Helvetica", "Arial", "sans-serif"';
 export const sansFontBold = '"OpenSans-Bold", "Helvetica", "Arial", "sans-serif"';
 export const appBarHeight = 64;
 

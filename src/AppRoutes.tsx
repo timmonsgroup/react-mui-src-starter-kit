@@ -53,8 +53,8 @@ const PrivateRoutes: FC = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route path="/" element={<MainLanding />} />
-        <Route path={`/${AREA_SLUG}/:id/*`} element={
-          <PermissionFilter permission={ACLS.CAN_VIEW_PLANNING_AREA}>
+        <Route path={`/${AREA_SLUG}`} element={
+          <PermissionFilter permission={ACLS.CAN_VIEW_A_FORM}>
             <ExampleForm />
           </PermissionFilter>
         } />

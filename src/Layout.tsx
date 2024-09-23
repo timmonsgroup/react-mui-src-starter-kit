@@ -21,7 +21,7 @@ const navLinks: NavLink[] = [
   {
     title: "Dashboard",
     href: "/dashboard",
-    permission: ACLS.CAN_VIEW_PLANNING_AREA,
+    permission: ACLS.CAN_VIEW_DASHBOARD,
   }
 ];
 

@@ -11,7 +11,7 @@
     "test": "vitest",
     "test:ci": "vitest --reporter=json --outputFile=./test-results.json --watch=false",
     "test:coverage": "vitest run --coverage",
-    "_comment_start": "Recommended script for local dev. `npm run start:dev` will start the frontend on port 4000 and the backend on port 4001. The backend should be using a self-signed certificate for HTTPS.",
+    "_comment_start": "Recommended script for local dev. `npm run start:dev` will start the frontend on PORT value (4000) and the backend on BACKEND_PORT(4001). The backend should be using a self-signed certificate for HTTPS.",
     "start:dev": "cd src && cross-env PORT=4000 HTTPS=true BACKEND_PORT=4001 USE_LOCAL=true npm run dev",
     "_comment": "The following scripts are for local development only to quickly bypass the pipeline for testing things that might only be occuring in a given environment. They are not intended for use in a CI/CD pipeline.",
     "deploy:dev": "aws s3 sync ./dist/ s3://static.generic.lcwpp.dev.timmons-dev.com/lcwpp",

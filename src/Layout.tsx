@@ -8,7 +8,7 @@ import { AUTH_STATES, useAuth } from "@timmons-group/shared-react-auth";
 
 import AppBar from "@timmons-group/shared-react-app-bar";
 import LCWPPLogo from "./assets/logo.png";
-import { ACLS, MobileMenuWidthBreakpoint } from "@constants";
+import { ACLS, AREA_SLUG, MobileMenuWidthBreakpoint } from "@constants";
 
 type NavLink = {
   title: string;
@@ -18,6 +18,7 @@ type NavLink = {
 
 const navLinks: NavLink[] = [
   { title: "Home", href: "/" },
+  { title: "A Form", href: AREA_SLUG },
   {
     title: "Dashboard",
     href: "/dashboard",

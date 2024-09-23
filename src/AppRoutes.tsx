@@ -43,6 +43,9 @@ const PublicRoutes: FC = () => {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="*" element={<NotFound />} />
+        <Route path={`/${AREA_SLUG}`} element={
+            <ExampleForm />
+        } />
       </Route>
     </Routes>
   )

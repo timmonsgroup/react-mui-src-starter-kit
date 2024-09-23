@@ -6,8 +6,8 @@ import { checker } from 'vite-plugin-checker';
 import { nodePolyfills } from "vite-plugin-node-polyfills";
 
 // Default ports - can mod this to pull from .env if needed
-const port = 4000;
-const backend_port = 4001;
+const port = process.env.PORT ? parseInt(process.env.PORT) : 3000;
+const backend_port = process.env.BACKEND_PORT ? parseInt(process.env.BACKEND_PORT) : 3001;
 
 // https://vitejs.dev/config/
 export default defineConfig({

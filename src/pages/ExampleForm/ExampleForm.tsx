@@ -10,6 +10,7 @@ import { useFormContext } from 'react-hook-form';
 import { UseFormReturnWithSections } from '@models/form.model';
 import { LayoutComponentRenderMethod, LayoutComponentsOptions } from '@components/LayoutParts';
 import { decimalCurrencyNumber } from '@helpers/helpers';
+import { appBarHeight } from '@root/muiTheme';
 
 const HelpIcon: FC = () => {
   return (
@@ -60,8 +61,8 @@ const ExampleForm: FC = () => {
       <SubHeader
         title="A Form demonstration"
         /*
-          // @ts-ignore */
-        sx={{ top: '160px' }}
+        // @ts-ignore */
+        sx={{ top: `${appBarHeight}px` }}
       />
       <>
         <DataPanel title="About This Form thing" expandable={true} headerProps={{ icon: <HelpIcon /> }}>

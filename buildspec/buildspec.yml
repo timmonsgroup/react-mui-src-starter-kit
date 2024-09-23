@@ -1,0 +1,37 @@
+version: 0.2
+
+env:
+    variables:
+        NODE_OPTIONS: "--max-old-space-size=8192"
+
+phases:
+    install:
+        runtime-versions:
+            nodejs: 18
+    pre_build:
+        commands:
+            - echo Restore started on `date`
+            - cd /tmp/
+            - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747.zip -O /tmp/sonar-scanner.zip
+            - unzip /tmp/sonar-scanner.zip
+            - mv sonar-scanner-* sonar-scanner
+            - cd -
+    build:
+        commands:
+            # Npm i in each subfolder
+            # npm build in each subfolder
+            # copy each build into the out folder in the structure we expect for s3
+            - npm i
+            - npm run build
+            - cp package.json dist
+            # Extract the version from the package.json
+            - version=`(cat package.json | jq -r '.version') || echo '0.0.0'`
+            - echo "Extracted our version as '$version'. If this is '0.0.0' it is because either package.json doesnt have a version property or jq is not installed"
+            # Extract the version from the package.json
+            # Run SonarScanner
+            - /tmp/sonar-scanner/bin/sonar-scanner -Dsonar.projectKey=$SonarQubeProject -Dsonar.projectVersion=$version -Dsonar.sources=./ -Dsonar.login=3275d35d773bcf33cc1bce1d06a7df7207381165 -Dsonar.host.url=https://sonarqube.timmonsdev.com -Dsonar.javascript.lcov.reportPaths=../coverage/lcov.info -Dsonar.exclusions=**/*.test.js,**/node_modules/**/*,**/local-dev.js,**/local-sam-dev.js,**/mocks/*,**/mocks/**/*,**/*jest*,**event_replay/*,**local-dev/** -Dsonar.tests=./ -Dsonar.test.inclusions=**/*.test.js || echo "Sonar failed"
+            #- if [ "$BuildDocs" = "true" ]; then cp -r docs ./dist/docs/; /usr/local/bin/npm run documentation || echo "Docs did not compile sucessfully"; fi;
+artifacts:
+    base-directory: dist
+    files:
+        - "**/*"

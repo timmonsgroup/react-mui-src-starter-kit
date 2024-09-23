@@ -1,0 +1,96 @@
+$accentColor: #FFD35A;
+
+//Grid properties
+// Prefix all the classes with 'hero-'
+.hero- {
+  // create a 3x3 grid
+  &area {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    min-height: clamp(200px, 50vh, 600px);
+  }
+
+  &image {
+    grid-row: 1 / span 3;
+    grid-column: 1 / span 3;
+    width: 100%;
+    min-height: clamp(200px, 65vh, 600px);
+    height: 20vh;
+    object-fit: cover;
+    object-position: left top;
+  }
+
+  &icon-badge {
+    padding-top: 48px;
+    width: 220px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  &text-wrapper {
+    grid-row: 3;
+    grid-column: 1 / span 3;
+    position: relative;
+  }
+
+  &text {
+    font-size: 48px;
+    color: #FFEDC0;
+    font-family: 'OpenSans-Regular', Helvetica, Arial, sans-serif !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  }
+
+  &bottom-docker {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 0px;
+    background: rgba(#005672, 0.6);
+  }
+}
+
+.splash {
+  .blurb {
+    width: 100%;
+    background: #005672;
+  }
+
+  .mission,
+  .footerArea {
+    width: 100%;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .mission {
+    background: white;
+
+    .mission-header {
+      font-family: 'OpenSans-Bold', Helvetica, Arial, sans-serif;
+      font-size: 34px;
+    }
+
+    .mission-body {
+      color: #767676;
+      font-weight: 700;
+      font-size: 16px;
+    }
+  }
+
+  .footerArea {
+    background: #434343;
+    text-align: center;
+
+    .footerTitle {
+      text-align: center;
+      color: white;
+    }
+  }
+}

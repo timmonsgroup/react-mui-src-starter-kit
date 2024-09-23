@@ -1,0 +1,29 @@
+.version {
+  font-size: 0.5em;
+  color: #fff;
+  position: absolute;
+  right: 0.25em;
+  top: 0px;
+  z-index: 999;
+}
+
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@media print {
+  .version {
+    display: none;
+  }
+
+  .no-print {
+    display: none;
+  }
+}
+
+b {
+  font-family: "OpenSans-Bold", "Helvetica", "Arial", "sans-serif" !important;
+}

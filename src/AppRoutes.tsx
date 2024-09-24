@@ -11,6 +11,7 @@ import Home from '@pages/Home';
 import { ACLS, AREA_SLUG } from '@constants';
 import MainLanding from '@pages/Landing/MainLanding';
 import ExampleForm from '@pages/ExampleForm/ExampleForm';
+import BreweryGrid from '@pages/BreweryGrid';
 
 // Create a generic not found component
 const NotFound: FC = () => {
@@ -45,6 +46,9 @@ const PublicRoutes: FC = () => {
         <Route path="*" element={<NotFound />} />
         <Route path={`/${AREA_SLUG}`} element={
             <ExampleForm />
+        } />
+        <Route path={`/breweries`} element={
+            <BreweryGrid />
         } />
       </Route>
     </Routes>

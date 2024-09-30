@@ -235,7 +235,10 @@ const AFormField: FC<AFormFieldProps> = ({ component, field, baseAppearance }) =
 
   // if the component has a maxWidth, set it in the props
   // otherwise, just pass the options
-  const props = component.maxWidth ? { options: fieldOptions, sx: { ...fieldSX, maxWidth: component.maxWidth } } : { sx: fieldSX, options: fieldOptions };
+  const props: Record<string, any> = component.maxWidth ? { options: fieldOptions, sx: { ...fieldSX, maxWidth: component.maxWidth } } : { sx: fieldSX, options: fieldOptions };
+  if (component.meta?.fieldComponentProps) {
+    props.fieldComponentProps = { ...component.meta?.fieldComponentProps };
+  }
 
   return (
     <DynamicField

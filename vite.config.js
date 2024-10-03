@@ -30,6 +30,14 @@ export default defineConfig({
       }
     }
   },
+  // Use the modern scss api
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: "modern",
+      }
+    }
+  },
   // some node_modules have not updated to esm and throw warnings in a build
   // Use this to suppress those warnings
   build: {
@@ -69,6 +77,7 @@ export default defineConfig({
     mkcert(),
     // Need that react plugin
     react(),
+    // Allow node polyfills for the browser (needed for many libraries implementing uploading / processing of files)
     nodePolyfills({
       include: ["path", "stream", "util"],
       exclude: ["http"],
